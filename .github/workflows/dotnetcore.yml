@@ -25,3 +25,8 @@ jobs:
       run: dotnet test --no-restore --verbosity normal
     - name: Publish
       run: dotnet publish -o '.\output'
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: artifact
+        path: .\output
