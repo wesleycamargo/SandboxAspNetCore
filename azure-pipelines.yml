@@ -51,7 +51,7 @@ stages:
               - task: AzureRmWebAppDeployment@4
                 inputs:
                   ConnectionType: 'AzureRM'
-                  azureSubscription: 'Visual Studio Enterprise'
+                  azureSubscription: 'VS Enterprise'
                   appType: 'webApp'
                   WebAppName: 'wa-mvpconf-devops-as-code'
                   packageForLinux: '$(System.ArtifactsDirectory)/**/*.zip'
