@@ -4,7 +4,7 @@ trigger:
 - azure-pipelines
 
 pool:
-  name: 'Pool'
+  name: 'Default'
 
 variables:
   buildConfiguration: 'Release'
