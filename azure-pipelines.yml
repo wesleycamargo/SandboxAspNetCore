@@ -1,3 +1,9 @@
+resources:
+  repositories:
+  - repository: Templates
+    type: github
+    endpoint: devopsnights
+    name: devopsnights/UDP-Application
 
 trigger:
 - master
@@ -13,21 +19,24 @@ stages:
   - stage: Build
 
     jobs: 
-    - job: Build
-      steps:
+    - template: template.yml@Templates
+    
+    # - job: Build
+    #   steps:
 
-      - task: DotNetCoreCLI@2
-        inputs:
-          command: 'publish'
-          publishWebProjects: true
-          arguments: '-o $(Build.ArtifactStagingDirectory)'
-          modifyOutputPath: false
+    #   - task: DotNetCoreCLI@2
+    #     inputs:
+    #       command: 'publish'
+    #       publishWebProjects: true
+    #       arguments: '-o $(Build.ArtifactStagingDirectory)'
+    #       modifyOutputPath: false
 
-      - task: PublishBuildArtifacts@1
-        inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          ArtifactName: 'drop'
-          publishLocation: 'Container'
+    #   - task: PublishBuildArtifacts@1
+    #     inputs:
+    #       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    #       ArtifactName: 'drop'
+    #       publishLocation: 'Container'
+          
 
   - stage: Deploy_Dev
 
